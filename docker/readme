@@ -1,0 +1,4 @@
+docker build -t $image_name
+docker run -ti $image_name
+docker rm `docker ps -aq -f status=paused -f status=exited -f status=dead`
+docker rmi -f $image_name

@@ -1,0 +1,16 @@
+- ctags (ctrl+], ctrl+t)
+sudo apt-get install ctags
+<<vimrc>>
+    set tags=./tags,tags;
+
+- cscope(cs f s xx, ctrl-\+s)
+sudo apt-get install cscope 
+<<shell>>
+find ./iri -name "*.java" > cscope.files
+cscope -Rbq
+<<vim>>
+cs add cscope.out
+
+
+blog.csdn.net/dengxiayehu/article/details/6330200
+

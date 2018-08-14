@@ -1,0 +1,20 @@
+# Dockerfile
+FROM ubuntu
+# Set timezone because tzinfo-data in Rails will use it
+ENV TZ 'Asia/Taipei'
+RUN apt update && apt upgrade -y
+RUN apt-get install git python3-setuptools python3-dev build-essential python3-pip -y
+RUN pip3 install --upgrade virtualenv
+RUN apt install wget git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libxml2-dev libxslt1-dev libcurl4-openssl-dev libffi-dev -y
+#RUN apt install tzdata
+#RUN echo $TZ > /etc/timezone && \
+#    rm /etc/localtime && \
+#    ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
+#    dpkg-reconfigure -f noninteractive tzdata
+# Using sqlite3 as default database
+RUN apt install libsqlite3-dev sqlite3 -y
+# Installing Node.js because Rails will use it to do stuffs on JavaScript
+RUN apt install -y nodejs
+
+WORKDIR "/app"
+
